@@ -1,0 +1,13 @@
+.about__section {
+    text-align: center;
+}
+
+.about__left-form {
+    display: inline-block;
+    width: 69%;
+}
+
+.about__right-info {
+    display: inline-block;
+    width: 29%;
+}
