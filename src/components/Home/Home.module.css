@@ -1,0 +1,32 @@
+.home__section {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    /* background-color: aqua; */
+}
+
+.home__slider-immage {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+    gap: 30px;
+}
+
+.home__slider-immage img {
+    width: 250px;
+}
+
+.home__information {
+    padding: 10px 20px;
+    text-align: center;
+    border: none;
+    border-radius: 3rem;
+}
+
+.home__information p {
+    font-size: 20px;
+}
+
+.home__information p a {
+    text-decoration: none;
+}
