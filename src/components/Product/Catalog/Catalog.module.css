@@ -1,0 +1,8 @@
+.catalog__section {
+    text-align: center;
+}
+
+.catalog__section .section__title {
+    margin-bottom: 40px;
+    font-size: 34px;
+}

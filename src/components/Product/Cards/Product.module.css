@@ -1,0 +1,43 @@
+.catalog__product {
+    width: 25%;
+    display: inline-block;
+    border-radius: 2rem;
+    padding: 10px;
+    margin: 0 0 4% 4%;
+}
+
+.catalog__product h1,
+.catalog__product p {
+    font-size: 18px;
+}
+
+.product__picture {
+    padding-top: 10px;
+}
+
+.product__picture img {
+    width: 50%;
+}
+
+.product__information {
+    margin-bottom: 2.5rem;
+}
+
+.product__container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.owner {
+    margin: 0;
+    margin-left: 30px;
+}
+
+.owner .span {
+    color: red;
+}
+
+.btn-view {
+    margin-right: 30px;
+}
