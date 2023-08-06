@@ -1,0 +1,14 @@
+footer {
+    padding: 10px 14px;
+}
+
+div {
+    border-radius: 16px;
+    padding: 10px 0 3px 0;
+}
+
+p {
+    text-align: center;
+    margin: 0;
+    padding-bottom: 7px;
+}
