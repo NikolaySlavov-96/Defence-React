@@ -1,5 +1,43 @@
+body {
+    margin: 0 auto;
+    padding: 0;
+}
+
+.btn {
+    background-color: #a9a9a991;
+    padding: 6px 18px;
+    border-radius: 8px;
+}
+
+.btn:hover {
+    background-color: aliceblue;
+    color: red;
+    border-color: aliceblue;
+    cursor: pointer;
+}
+
+.btn:active {
+    background-color: #f5f5dc;
+}
+
+.prop {
+    color: rgb(170, 163, 163);
+}
+
+.span {
+    color: black;
+    font-size: 22px;
+}
+
 .shadow {
     background-color: #f5f5dc;
     -webkit-box-shadow: 5px 7px 24px 4px rgba(106, 109, 78, 0.86);
     box-shadow: 5px 7px 24px 4px rgba(106, 109, 78, 0.86);
+}
+
+.error {
+    color: red;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 500;
 }
