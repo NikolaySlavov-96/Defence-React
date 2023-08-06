@@ -1,0 +1,11 @@
+.not-found__section {
+    text-align: center;
+    width: 40%;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+
+.not-found__container {
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+}
