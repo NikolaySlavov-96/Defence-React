@@ -1,10 +1,11 @@
+import { useProductContext } from "../../../contexts/ProductContext";
 import { ProductCard } from "../Cards/ProductCard";
 
 import style from './Catalog.module.css';
 
 export const Catalog = () => {
 
-    const { product } = { product: [{ articul: '22', mark: '22', model: '22', createAt: 22, owner: '2', _id: '22', img: '222' }] }
+    const { product } = useProductContext([]);
 
     return (
         <section className={style["catalog__section"]}>
