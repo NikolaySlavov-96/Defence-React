@@ -1,33 +1,45 @@
 import { Link, useParams } from 'react-router-dom';
 import style from './Detail.module.css';
+import { useEffect, useState } from 'react';
+import { productServiceFactory } from '../../../services/product';
+import { useService } from '../../../hooks/useService';
 
 export const Detail = () => {
 
-    const { id } = useParams()
-    const { img, articul, mark, model, description, _id } = { img: '22', articul: '22', mark: '22', model: '2', description: '22', _id: '22' }
-    const owner = false;
+    const { id } = useParams();
+    const [product, setProduct] = useState({});
+    const productService = useService(productServiceFactory);
+
+    useEffect(() => {
+        productService.getProduct(id)
+            .then(req => {
+                setProduct(req[0]);
+            })
+    }, [id]);
+
+    const owner = true;
 
     return (
         <section className={style["detail__section"]}>
             <article className={`${style["detail__container"]} shadow`}>
-                <div className="detail__img">
-                    <img src={img} alt="address" />
+                <div className={style["detail__img"]}>
+                    <img src={product.img} alt="address" />
                 </div>
                 <div className={style["detail__description"]}>
-                    <h1 className="prop">Detail of: <span className="span">{articul}</span></h1>
-                    <p className="prop">Mark: <span className="span">{mark}</span></p>
-                    <p className="prop">Model: <span className="span">{model}</span></p>
-                    <p className="prop">Description: <span className="span">{description}</span></p>
+                    <h1 className="prop">Detail of: <span className="span">{product.articul}</span></h1>
+                    <p className="prop">Mark: <span className="span">{product.mark}</span></p>
+                    <p className="prop">Model: <span className="span">{product.model}</span></p>
+                    <p className="prop">Description: <span className="span">{product.description}</span></p>
                 </div>
                 <div className={style["detail__button"]}>
                     {owner && (
                         <>
-                            <Link to={`/product/edit/${_id}`} className={`btn ${style["edit"]}`}>Edit</Link>
-                            <Link to={`/product/delete/${_id}`} className={`btn ${style["delete"]}`}>Delete</Link>
+                            <Link to={`/product/edit/${product._id}`} className={`btn ${style["edit"]}`}>Edit</Link>
+                            <Link to={`/product/delete/${product._id}`} className={`btn ${style["delete"]}`}>Delete</Link>
                         </>
                     )}
                     {!owner && (
-                        <Link to={`/cart/${_id}`} className={`btn ${style["buy"]}`}>Buy Product</Link>
+                        <Link to={`/cart/${product._id}`} className={`btn ${style["buy"]}`}>Buy Product</Link>
                     )}
                 </div >
             </article >
