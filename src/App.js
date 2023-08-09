@@ -14,10 +14,11 @@ import { Delete } from './components/Product/Delete/Delete';
 import { Login } from './components/Auth/Login/Login';
 import { Register } from './components/Auth/Register/Register';
 import { ProductProvider } from './contexts/ProductContext';
+import { AuthProvide } from './contexts/AuthContext';
 
 function App() {
     return (
-        <>
+        <AuthProvide>
             <Header />
 
             <ProductProvider>
@@ -36,7 +37,7 @@ function App() {
             </ProductProvider>
 
             <Footer />
-        </>
+        </AuthProvide>
     );
 }
 
