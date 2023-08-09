@@ -8,17 +8,16 @@ async function requester(method, token, url, inputDate) {
         headers: {}
     }
 
-    if (inputDate !== null) {
-        options.headers['Content-Type'] = 'application/json';
+    if (inputDate !== undefined) {
+        options.headers['Content-Type'] = 'application-json';
         options.body = JSON.stringify(inputDate);
     }
-
-    // if (token) {
-    //     options.headers = {
-    //         ...options,
-    //         'author-d': token,
-    //     }
-    // }
+    if (token) {
+        options.headers = {
+            ...options.headers,
+            'Author-D': token,
+        }
+    }
 
     try {
         const response = await fetch(HOST + url, options);
