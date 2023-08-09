@@ -1,22 +1,34 @@
 import { Link } from 'react-router-dom';
 import style from './Register.module.css';
+import { useAuthContext } from '../../../contexts/AuthContext';
+import { useForm } from '../../../hooks/useForm';
 
 export const Register = () => {
+    const { onSubmitRegister } = useAuthContext();
+
+    const { values, changeHandler, onSubmit } = useForm({
+        email: '',
+        username: '',
+        password: '',
+        rePassword: '',
+        year: '',
+    }, onSubmitRegister);
+
     return (
         <section className={style["register__section"]}>
             <div className={`shadow ${style["form__container"]}`}>
-                <form>
+                <form onSubmit={onSubmit}>
                     <div className="email">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" />
+                        <label htmlFor="email">Email</label>
+                        <input type="email" id="email" name='email' value={values.email} onChange={changeHandler} />
                         {/* <ng-container *ngIf="form.get('email')?.touched"> */}
                         {/* <p className="error" *ngIf="form.get('email')?.errors?.['required']">Required fields!</p> */}
                         {/* </ng-container> */}
                     </div>
 
                     <div className="username">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" />
+                        <label htmlFor="username">Username</label>
+                        <input type="text" id="username" name='username' value={values.username} onChange={changeHandler} />
                         {/* <ng-container *ngIf="form.get('username')?.touched"> */}
                         {/* <p className="error" *ngIf="form.get('username')?.errors?.['required']">Required fields!</p> */}
                         {/* <p className="error" *ngIf="form.get('username')?.errors?.['minlength']">Minimal length is 6 characters */}
@@ -26,8 +38,8 @@ export const Register = () => {
 
                     {/* <ng-container formGroupName="pass"> */}
                     <div className="password">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" />
+                        <label htmlFor="password">Password</label>
+                        <input type="password" id="password" name='password' value={values.password} onChange={changeHandler} />
                         {/* <ng-container *ngIf="form.get('pass')?.get('password')?.touched"> */}
                         {/* <p className="error" *ngIf="form.get('pass')?.get('password')?.errors?.['required']">Required */}
                         {/* fields!</p> */}
@@ -37,8 +49,8 @@ export const Register = () => {
                     {/* </ng-container> */}
 
                     <div className="repeatPassword">
-                        <label for="rePassword">Repeat Password</label>
-                        <input type="password" id="rePassword" />
+                        <label htmlFor="rePassword">Repeat Password</label>
+                        <input type="password" id="rePassword" name='rePassword' value={values.rePassword} onChange={changeHandler} />
 
                         {/* <ng-container */}
                         {/* *ngIf="form.get('pass')?.errors?.['sameValueGroupValidator'] && form.get('pass')?.get('rePassword')?.touched"> */}
@@ -48,8 +60,8 @@ export const Register = () => {
                     </div>
 
                     <div className="year">
-                        <label for="year">Year</label>
-                        <input type="number" id="year" />
+                        <label htmlFor="year">Year</label>
+                        <input type="number" id="year" name='year' value={values.year} onChange={changeHandler} />
                         {/* <ng-container *ngIf="form.get('year')?.touched"> */}
                         {/* <p className="error" *ngIf="form.get('year')?.errors?.['required']">Required fields!</p> */}
                         {/* </ng-container> */}
