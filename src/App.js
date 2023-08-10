@@ -15,6 +15,8 @@ import { Login } from './components/Auth/Login/Login';
 import { Register } from './components/Auth/Register/Register';
 import { ProductProvider } from './contexts/ProductContext';
 import { AuthProvide } from './contexts/AuthContext';
+import { RouteGuard } from './components/common/RouteGuard';
+import { ProductOwner } from './components/common/ProductOwner';
 
 function App() {
     return (
@@ -29,10 +31,18 @@ function App() {
                     <Route path='/auth/register' element={<Register />} />
                     <Route path='/about' element={<About />} />
                     <Route path='/product/catalog' element={<Catalog />} />
-                    <Route path='/product/create' element={<Create />} />
                     <Route path='/product/detail/:id' element={<Detail />} />
-                    <Route path='/product/edit/:id' element={<Edit />} />
-                    <Route path='/product/delete/:id' element={<Delete />} />
+                    <Route element={<RouteGuard />} >
+                        <Route path='/product/create' element={<Create />} />
+                        <Route path='/product/edit/:id' element={
+                            <ProductOwner>
+                                <Edit />
+                            </ProductOwner>} />
+                        <Route path='/product/delete/:id' element={
+                            <ProductOwner>
+                                <Delete />
+                            </ProductOwner>} />
+                    </Route>
                 </Routes>
             </ProductProvider>
 
