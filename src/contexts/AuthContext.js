@@ -29,8 +29,15 @@ export const AuthProvide = ({ children }) => {
         }
     }
 
-    const onSubmitLogin = () => {
+    const onSubmitLogin = async (value) => {
+        try {
+            const data = await authService.login(value);
+            setAuth(data);
+            navigate('/product/catalog');
 
+        } catch (err) {
+            console.log(err.message)
+        }
     }
 
     const onSubmitLogout = async () => {
@@ -46,6 +53,7 @@ export const AuthProvide = ({ children }) => {
         isAuthenticated: !!auth.accessToken,
         username: auth.username,
         accessToken: auth.accessToken,
+        userId: auth._id,
     }
 
     return (
