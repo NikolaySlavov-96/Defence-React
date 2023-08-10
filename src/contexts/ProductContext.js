@@ -18,6 +18,10 @@ export const ProductProvider = ({ children }) => {
             });
     }, []);
 
+    const getProduct = (id) => {
+        return product.find(prod => prod._id === id);
+    }
+
     const onSubmitCreateProduct = async (data) => {
         const prod = await productService.createProduct(data);
 
@@ -41,6 +45,7 @@ export const ProductProvider = ({ children }) => {
 
     const contextValue = {
         product,
+        getProduct,
         onSubmitCreateProduct,
         onSubmitEditProduct,
         onSubmitDeleteProduct,
