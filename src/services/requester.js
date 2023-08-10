@@ -9,7 +9,7 @@ async function requester(method, token, url, inputDate) {
     }
 
     if (inputDate !== undefined) {
-        options.headers['Content-Type'] = 'application-json';
+        options.headers['Content-Type'] = 'application/json';
         options.body = JSON.stringify(inputDate);
     }
     if (token) {
