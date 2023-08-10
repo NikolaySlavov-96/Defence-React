@@ -1,23 +1,32 @@
 import { Link } from 'react-router-dom';
 import style from './Login.module.css';
+import { useAuthContext } from '../../../contexts/AuthContext';
+import { useForm } from '../../../hooks/useForm';
 
 export const Login = () => {
+
+    const { onSubmitLogin } = useAuthContext();
+
+    const { values, changeHandler, onSubmit } = useForm({
+        username: '',
+        password: '',
+    }, onSubmitLogin);
     return (
         <section className={style["login__section"]}>
             <h1 className={style["login__title"]}>Login Page</h1>
             <div className={`shadow ${style["form__container"]}`}>
-                <form>
+                <form onSubmit={onSubmit}>
                     <div>
-                        <label for="username">Username</label>
-                        <input type="text" name="username" id="username" />
+                        <label htmlFor="username">Username</label>
+                        <input type="text" name="username" id="username" value={values.username} onChange={changeHandler} />
                         {/* <ng-container *ngIf="username.touched"> */}
                         {/* <p className="error" *ngIf="username?.errors?.['required']">Required fields!</p> */}
                         {/* </ng-container> */}
                     </div>
 
                     <div className="password">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password" />
+                        <label htmlFor="password">Password</label>
+                        <input type="password" name="password" id="password" value={values.password} onChange={changeHandler} />
                         {/* <ng-container *ngIf="password.touched"> */}
                         {/* <p className="error" *ngIf="password?.errors?.['required']">Required fields!</p> */}
                         {/* </ng-container> */}
