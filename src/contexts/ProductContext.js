@@ -22,21 +22,21 @@ export const ProductProvider = ({ children }) => {
         const prod = await productService.createProduct(data);
 
         setProduct(p => [...p, prod]);
-        navigate('/catalog/' + prod._id);
+        navigate('/product/catalog');
     }
 
     const onSubmitEditProduct = async (data) => {
         const prod = await productService.editProduct(data._id, data);
 
         setProduct(p => p.map(x => x._id === data._id ? prod : x));
-        navigate(`/catalog/${prod._id}`);
+        navigate('/product/catalog');
     }
 
     const onSubmitDeleteProduct = async (id) => {
         await productService.deleteProduct(id);
 
         setProduct(p => p.filter(prod => prod._id !== id));
-        navigate('/catalog');
+        navigate('/product/catalog');
     }
 
     const contextValue = {
