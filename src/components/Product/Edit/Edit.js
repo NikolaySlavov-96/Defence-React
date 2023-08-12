@@ -11,14 +11,21 @@ export const Edit = () => {
     const { id } = useParams();
     const productService = useService(productServiceFactory);
 
-    const { values, changeHandler, onSubmit, changeValue } = useForm({
+    const { values, changeHandler, onSubmit, changeValue, errors } = useForm({
         articul: '',
         img: '',
         mark: '',
         model: '',
         release: '',
         description: '',
-    }, onSubmitEditProduct);
+    }, onSubmitEditProduct, {
+        articul: ['required', '5'],
+        img: ['required', '5'],
+        mark: ['required', '5'],
+        model: ['required', '5'],
+        release: ['required', '5'],
+        description: ['required', '5'],
+    });
 
 
     useEffect(() => {
@@ -35,52 +42,34 @@ export const Edit = () => {
                 <form onSubmit={onSubmit}>
                     <div>
                         <label htmlFor="articul">Product Type:</label>
-                        <input type="text" name="articul" id="productName" value={values.articul} onChange={changeHandler} />
-                        {/* <ng-container *ngIf="articul.touched"> */}
-                        {/* <p className="error" *ngIf="articul.errors?.['required']">Required fields!</p> */}
-                        {/* <p className="error" *ngIf="articul.errors?.['minlength']">Minimal length is 5 characters</p> */}
-                        {/* </ng-container> */}
+                        <input type="text" name="articul" id="productName" value={values.articul} onChange={changeHandler} onBlur={changeHandler} />
+                        {errors.articul && (<p className='error'>{errors.articul}</p>)}
                     </div >
 
                     <div>
                         <label htmlFor="img">Img:</label>
-                        <input type="text" name="img" id="img" value={values.img} onChange={changeHandler} />
-                        {/* <ng-container *ngIf="img.touched"> */}
-                        {/* <p className="error" *ngIf="img.errors?.['required']">Required fields!</p> */}
-                        {/* <p className="error" * ngIf= "img.errors?.['minlength']" > Minimal length is 5 characters</p > */}
-                        {/* </ng - container > */}
+                        <input type="text" name="img" id="img" value={values.img} onChange={changeHandler} onBlur={changeHandler} />
+                        {errors.img && (<p className='error'>{errors.img}</p>)}
                     </div >
                     <div>
                         <label htmlFor="mark">Mark:</label>
-                        <input type="text" name="mark" id="makr" value={values.mark} onChange={changeHandler} />
-                        {/* <ng-container *ngIf="mark.touched"> */}
-                        {/* <p className="error" *ngIf="mark.errors?.['required']">Required fields!</p> */}
-                        {/* <p className="error" * ngIf= "mark.errors?.['minlength']" > Minimal length is 5 characters</p > */}
-                        {/* </ng - container > */}
+                        <input type="text" name="mark" id="makr" value={values.mark} onChange={changeHandler} onBlur={changeHandler} />
+                        {errors.mark && (<p className='error'>{errors.mark}</p>)}
                     </div >
                     <div>
                         <label htmlFor="model">Model:</label>
-                        <input type="text" name="model" id="model" value={values.model} onChange={changeHandler} />
-                        {/* <ng-container *ngIf="model.touched"> */}
-                        {/* <p className="error" *ngIf="model.errors?.['required']">Required fields!</p> */}
-                        {/* <p className="error" * ngIf="model.errors?.['minlength']" > Minimal length is 5 characters</p > */}
-                        {/* </ng - container > */}
+                        <input type="text" name="model" id="model" value={values.model} onChange={changeHandler} onBlur={changeHandler} />
+                        {errors.model && (<p className='error'>{errors.model}</p>)}
                     </div >
                     <div>
                         <label htmlFor="release">Release:</label>
-                        <input type="text" name="release" id="release" value={values.release} onChange={changeHandler} />
-                        {/* <ng-container *ngIf="release.touched"> */}
-                        {/* <p className="error" *ngIf="release.errors?.['required']">Required fields!</p> */}
-                        {/* <p className="error" * ngIf="release.errors?.['minlength']" > Minimal length is 5 characters</p > */}
-                        {/* </ng - container > */}
+                        <input type="text" name="release" id="release" value={values.release} onChange={changeHandler} onBlur={changeHandler} />
+                        {errors.release && (<p className='error'>{errors.release}</p>)}
                     </div >
                     <div>
                         <label htmlFor="description">Description:</label>
-                        <input type="text" name="description" id="description" value={values.description} onChange={changeHandler} />
-                        {/* <ng-container *ngIf="description.touched"> */}
-                        {/* <p className="error" *ngIf="description.errors?.['required']">Required fields!</p> */}
-                        {/* <p className="error" * ngIf="description.errors?.['minlength']" > Minimal length is 5 characters</p > */}
-                        {/* </ng - container > */}
+                        <input type="text" name="description" id="description" value={values.description} onChange={changeHandler} onBlur={changeHandler} />
+                        {errors.description && (<p className='error'>{errors.description}</p>)}
                     </div >
 
                     <button className="btn">Edit Product</button >
