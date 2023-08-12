@@ -10,7 +10,7 @@ export const useForm = (initialValue, onSubmitHandler, errorTarget) => {
         if (errorTarget[e.target.name] && errorTarget[e.target.name][0] === 'required') {
             if (values[e.target.name].length <= 1) {
                 setErrors(state => ({ ...state, [e.target.name]: `${e.target.name} is required` }))
-            } else if (errorTarget[e.target.name]?.[1] >= values[e.target.name].length) {
+            } else if (errorTarget[e.target.name]?.[1] > values[e.target.name].length) {
                 setErrors(state => ({ ...state, [e.target.name]: `Minimal length is ${errorTarget[e.target.name][1]}` }))
             } else {
                 setErrors(state => ({ ...state, [e.target.name]: '' }))
