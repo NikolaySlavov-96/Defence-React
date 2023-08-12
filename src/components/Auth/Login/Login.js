@@ -7,10 +7,13 @@ export const Login = () => {
 
     const { onSubmitLogin } = useAuthContext();
 
-    const { values, changeHandler, onSubmit } = useForm({
+    const { values, changeHandler, onSubmit, errors } = useForm({
         username: '',
         password: '',
-    }, onSubmitLogin);
+    }, onSubmitLogin, {
+        username: ['required'],
+        password: ['required'],
+    });
     return (
         <section className={style["login__section"]}>
             <h1 className={style["login__title"]}>Login Page</h1>
@@ -18,18 +21,14 @@ export const Login = () => {
                 <form onSubmit={onSubmit}>
                     <div>
                         <label htmlFor="username">Username</label>
-                        <input type="text" name="username" id="username" value={values.username} onChange={changeHandler} />
-                        {/* <ng-container *ngIf="username.touched"> */}
-                        {/* <p className="error" *ngIf="username?.errors?.['required']">Required fields!</p> */}
-                        {/* </ng-container> */}
+                        <input type="text" name="username" id="username" value={values.username} onChange={changeHandler} onBlur={changeHandler} />
+                        {errors.username && (<p className='error'>{errors.username}</p>)}
                     </div>
 
                     <div className="password">
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" id="password" value={values.password} onChange={changeHandler} />
-                        {/* <ng-container *ngIf="password.touched"> */}
-                        {/* <p className="error" *ngIf="password?.errors?.['required']">Required fields!</p> */}
-                        {/* </ng-container> */}
+                        <input type="password" name="password" id="password" value={values.password} onChange={changeHandler} onBlur={changeHandler} />
+                        {errors.password && (<p className='error'>{errors.password}</p>)}
                     </div>
 
                     <button className={`btn ${style["btn-login"]}`}> Login in</button >

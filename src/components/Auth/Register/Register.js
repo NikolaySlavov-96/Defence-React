@@ -6,13 +6,29 @@ import { useForm } from '../../../hooks/useForm';
 export const Register = () => {
     const { onSubmitRegister } = useAuthContext();
 
-    const { values, changeHandler, onSubmit } = useForm({
+    const { values, changeHandler, onSubmit, errors } = useForm({
         email: '',
         username: '',
         password: '',
         rePassword: '',
         year: '',
-    }, onSubmitRegister);
+    }, onSubmitRegister, {
+        email: ['required'],
+        username: ['required', '5'],
+        password: ['required', '5'],
+    });
+
+    const err = {
+        rePassword: '',
+        year: '',
+    }
+    if (values.password !== values.rePassword) {
+        err.rePassword = 'Pasword don\'t match';
+    }
+
+    if (values.year < 0 || values.year > 110) {
+        err.year = 'Year not valid'
+    }
 
     return (
         <section className={style["register__section"]}>
@@ -20,51 +36,32 @@ export const Register = () => {
                 <form onSubmit={onSubmit}>
                     <div className="email">
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name='email' value={values.email} onChange={changeHandler} />
-                        {/* <ng-container *ngIf="form.get('email')?.touched"> */}
-                        {/* <p className="error" *ngIf="form.get('email')?.errors?.['required']">Required fields!</p> */}
-                        {/* </ng-container> */}
+                        <input type="email" id="email" name='email' value={values.email} onChange={changeHandler} onBlur={changeHandler} />
+                        {errors.email && (<p className='error'>{errors.email}</p>)}
                     </div>
 
                     <div className="username">
                         <label htmlFor="username">Username</label>
-                        <input type="text" id="username" name='username' value={values.username} onChange={changeHandler} />
-                        {/* <ng-container *ngIf="form.get('username')?.touched"> */}
-                        {/* <p className="error" *ngIf="form.get('username')?.errors?.['required']">Required fields!</p> */}
-                        {/* <p className="error" *ngIf="form.get('username')?.errors?.['minlength']">Minimal length is 6 characters */}
-                        {/* </p> */}
-                        {/* </ng-container> */}
+                        <input type="text" id="username" name='username' value={values.username} onChange={changeHandler} onBlur={changeHandler} />
+                        {errors.username && (<p className='error'>{errors.username}</p>)}
                     </div >
 
-                    {/* <ng-container formGroupName="pass"> */}
                     <div className="password">
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password" name='password' value={values.password} onChange={changeHandler} />
-                        {/* <ng-container *ngIf="form.get('pass')?.get('password')?.touched"> */}
-                        {/* <p className="error" *ngIf="form.get('pass')?.get('password')?.errors?.['required']">Required */}
-                        {/* fields!</p> */}
-                        {/* <p className="error" *ngIf="form.get('pass')?.get('password')?.errors?.['minlength']">Minimal length */}
-                        {/* is 5 characters</p> */}
+                        <input type="password" id="password" name='password' value={values.password} onChange={changeHandler} onBlur={changeHandler} />
+                        {errors.password && (<p className='error'>{errors.password}</p>)}
                     </div >
-                    {/* </ng-container> */}
 
                     <div className="repeatPassword">
                         <label htmlFor="rePassword">Repeat Password</label>
                         <input type="password" id="rePassword" name='rePassword' value={values.rePassword} onChange={changeHandler} />
-
-                        {/* <ng-container */}
-                        {/* *ngIf="form.get('pass')?.errors?.['sameValueGroupValidator'] && form.get('pass')?.get('rePassword')?.touched"> */}
-                        {/* <p className="error">Repeat Password don't match</p> */}
-                        {/* </ng-container> */}
-                        {/* </ng - container > */}
+                        {err.rePassword && (<p className='error'>{err.rePassword}</p>)}
                     </div>
 
                     <div className="year">
                         <label htmlFor="year">Year</label>
                         <input type="number" id="year" name='year' value={values.year} onChange={changeHandler} />
-                        {/* <ng-container *ngIf="form.get('year')?.touched"> */}
-                        {/* <p className="error" *ngIf="form.get('year')?.errors?.['required']">Required fields!</p> */}
-                        {/* </ng-container> */}
+                        {err.year && (<p className='error'>{err.year}</p>)}
                     </div >
 
                     <button className={`btn ${style["btn-register"]}`}> Register</button >
