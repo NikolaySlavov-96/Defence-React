@@ -35,7 +35,7 @@ async function requester(method, token, url, inputDate) {
 
     } catch (err) {
         alert(err.message);
-        // throw err;
+        throw err;
     }
 }
 
