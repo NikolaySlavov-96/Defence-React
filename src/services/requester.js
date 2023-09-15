@@ -1,4 +1,4 @@
-const HOST = 'http://192.168.88.50:3030';
+const HOST = 'http://192.168.88.51:3040';
 // const HOST = 'https://slavo-v.top:5055';
 
 async function requester(method, token, url, inputDate) {
@@ -35,7 +35,7 @@ async function requester(method, token, url, inputDate) {
 
     } catch (err) {
         alert(err.message);
-        throw err;
+        // throw err;
     }
 }
 
