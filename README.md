@@ -68,3 +68,21 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+This Application have only two fundamental functionality section. 
+1. /product
+2. /auth
+
+First section is product.In this section have a few page and sub pages.
+    - /product/catalog
+    - /product/create
+    - /product/detail/id
+    - /product/edit/id
+    - product/delete/id
+ In this section can find all products received from API with short information for products, also can create new product, then can to find detail for selected products with all information or edit / delete if owner on selected products. 
+
+Second section is auth. In this section habe a few page. 
+    - /auth/login
+    - /auth/register
+    - /auth/logout
+ In this section can find page for Login, Register, and functionality for Logout.
