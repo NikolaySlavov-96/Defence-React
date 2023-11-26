@@ -5,7 +5,7 @@ import { useForm } from '../../../hooks/useForm';
 
 export const Login = () => {
 
-    const { onSubmitLogin } = useAuthContext();
+    const { onSubmitLogin,error } = useAuthContext();
 
     const { values, changeHandler, onSubmit, errors } = useForm({
         username: '',
@@ -16,6 +16,10 @@ export const Login = () => {
     });
     return (
         <section className={style["login__section"]}>
+            {!!error.length && (<div className='error_serv'>
+                {error}
+            </div>
+            )}
             <h1 className={style["login__title"]}>Login Page</h1>
             <div className={`shadow ${style["form__container"]}`}>
                 <form onSubmit={onSubmit}>

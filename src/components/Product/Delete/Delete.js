@@ -7,7 +7,7 @@ import { productServiceFactory } from '../../../services/product';
 import { useProductContext } from '../../../contexts/ProductContext';
 
 export const Delete = () => {
-    const { onSubmitDeleteProduct } = useProductContext();
+    const { onSubmitDeleteProduct, error } = useProductContext();
     const productService = useService(productServiceFactory);
     const [prod, setProd] = useState({});
     const { id } = useParams();
@@ -21,6 +21,10 @@ export const Delete = () => {
 
     return (
         <section className={style["delete__section"]}>
+            {!!error.length && (<div className='error_serv'>
+                {error}
+            </div>
+            )}
             <div className={`shadow ${style["delete__container"]}`}>
                 <h1 className={style["delete__title"]}>Delete page</h1>
                 <p className={style["remove__text"]}>Are you shure you want to delete this product? <span>{prod.articul}</span></p>

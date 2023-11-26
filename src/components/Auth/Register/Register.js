@@ -4,7 +4,7 @@ import { useAuthContext } from '../../../contexts/AuthContext';
 import { useForm } from '../../../hooks/useForm';
 
 export const Register = () => {
-    const { onSubmitRegister } = useAuthContext();
+    const { onSubmitRegister, error } = useAuthContext();
 
     const { values, changeHandler, onSubmit, errors } = useForm({
         email: '',
@@ -32,6 +32,10 @@ export const Register = () => {
 
     return (
         <section className={style["register__section"]}>
+            {!!error.length && (<div className='error_serv'>
+                {error}
+            </div>
+            )}
             <div className={`shadow ${style["form__container"]}`}>
                 <form onSubmit={onSubmit}>
                     <div className="email">

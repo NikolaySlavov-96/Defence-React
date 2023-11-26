@@ -7,7 +7,7 @@ import { useForm } from '../../../hooks/useForm';
 import { useEffect } from 'react';
 
 export const Edit = () => {
-    const { onSubmitEditProduct } = useProductContext();
+    const { onSubmitEditProduct, error } = useProductContext();
     const { id } = useParams();
     const productService = useService(productServiceFactory);
 
@@ -37,6 +37,10 @@ export const Edit = () => {
 
     return (
         <section className={style["edit__section"]}>
+            {!!error.length && (<div className='error_serv'>
+                {error}
+            </div>
+            )}
             <h1>Edit product for salle</h1>
             <div className={`${style["form__container"]} shadow`}>
                 <form onSubmit={onSubmit}>

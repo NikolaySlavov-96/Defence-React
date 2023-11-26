@@ -4,7 +4,7 @@ import style from './Create.module.css';
 
 export const Create = () => {
 
-    const { onSubmitCreateProduct } = useProductContext();
+    const { onSubmitCreateProduct, error } = useProductContext();
 
     const { values, changeHandler, onSubmit, errors } = useForm({
         articul: '',
@@ -25,6 +25,10 @@ export const Create = () => {
     return (
         <section className={style["create__section"]}>
             <h1>Create product for salle</h1>
+            {!!error.length && (<div className='error_serv'>
+                {error}
+            </div>
+            )}
             <div className={`${style["form__container"]} shadow`}>
                 <form onSubmit={onSubmit}>
                     <div>
