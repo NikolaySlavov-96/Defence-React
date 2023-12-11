@@ -1,22 +1,18 @@
 import { Link, useParams } from 'react-router-dom';
 import style from './Detail.module.css';
 import { useEffect, useState } from 'react';
-import { productServiceFactory } from '../../../services/product';
-import { useService } from '../../../hooks/useService';
 import { useAuthContext } from '../../../contexts/AuthContext';
+import { useProductContext } from '../../../contexts/ProductContext';
 
 export const Detail = () => {
 
     const { id } = useParams();
     const [product, setProduct] = useState({});
-    const productService = useService(productServiceFactory);
+    const { getProduct } = useProductContext();
     const { userId } = useAuthContext()
 
     useEffect(() => {
-        productService.getProduct(id)
-            .then(req => {
-                setProduct(req[0]);
-            })
+        setProduct(getProduct(id));
     }, [id]);
 
     const owner = userId && product.owner === userId;
