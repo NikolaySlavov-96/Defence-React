@@ -15,8 +15,10 @@ import { Login } from './components/Auth/Login/Login';
 import { Register } from './components/Auth/Register/Register';
 import { ProductProvider } from './contexts/ProductContext';
 import { AuthProvide } from './contexts/AuthContext';
+import { CommentProvide } from './contexts/CommentsContext';
 import { RouteGuard } from './components/common/RouteGuard';
 import { ProductOwner } from './components/common/ProductOwner';
+import { ShowAll } from './components/Commentar/ShowComment/ShowComments'
 
 function App() {
     return (
@@ -24,26 +26,28 @@ function App() {
             <Header />
 
             <ProductProvider>
-                <Routes>
-                    <Route path='*' element={<PageNotFound />} />
-                    <Route path='/' element={<Home />} />
-                    <Route path='/auth/login' element={<Login />} />
-                    <Route path='/auth/register' element={<Register />} />
-                    <Route path='/about' element={<About />} />
-                    <Route path='/product/catalog' element={<Catalog />} />
-                    <Route path='/product/detail/:id' element={<Detail />} />
-                    <Route element={<RouteGuard />} >
-                        <Route path='/product/create' element={<Create />} />
-                        <Route path='/product/edit/:id' element={
-                            <ProductOwner>
-                                <Edit />
-                            </ProductOwner>} />
-                        <Route path='/product/delete/:id' element={
-                            <ProductOwner>
-                                <Delete />
-                            </ProductOwner>} />
-                    </Route>
-                </Routes>
+                <CommentProvide>
+                    <Routes>
+                        <Route path='*' element={<PageNotFound />} />
+                        <Route path='/' element={<Home />} />
+                        <Route path='/auth/login' element={<Login />} />
+                        <Route path='/auth/register' element={<Register />} />
+                        <Route path='/about' element={<About />} />
+                        <Route path='/product/catalog' element={<Catalog />} />
+                        <Route path='/product/detail/:id' element={<><Detail /> <ShowAll /></>} />
+                        <Route element={<RouteGuard />} >
+                            <Route path='/product/create' element={<Create />} />
+                            <Route path='/product/edit/:id' element={
+                                <ProductOwner>
+                                    <Edit />
+                                </ProductOwner>} />
+                            <Route path='/product/delete/:id' element={
+                                <ProductOwner>
+                                    <Delete />
+                                </ProductOwner>} />
+                        </Route>
+                    </Routes>
+                </CommentProvide>
             </ProductProvider>
 
             <Footer />
