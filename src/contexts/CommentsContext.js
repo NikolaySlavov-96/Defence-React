@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useService } from "../hooks/useService";
 import { commentarServiceFactory } from "../services/commentars";
 
@@ -8,11 +8,23 @@ const CommentContext = createContext();
 export const CommentProvide = ({ children }) => {
     const [comment, setComment] = useState([]);
     const [error, setError] = useState([]);
-    const commentService = useService(commentarServiceFactory);
+    const [prodId, setProdId] = useState('');
+    const CommentarService = useService(commentarServiceFactory);
 
-    const onSubmitCreate = async (idProduct, value) => {
+    useEffect(() => {
+        if (prodId !== '') {
+            CommentarService.getCommentars(prodId)
+                .then(req => {
+                    console.log(req);
+                    setComment(req);
+                });
+        }
+    }, [prodId]);
+
+    const onSubmitCreate = async (value) => {
         try {
-            const data = await commentService.createCommentar(idProduct, value);
+            const data = await CommentarService.createCommentar(prodId, value);
+            console.log(data);
             setComment(data);
         } catch (err) {
             setError(err.message);
@@ -21,6 +33,7 @@ export const CommentProvide = ({ children }) => {
 
     const contextValue = {
         comment,
+        setProdId,
         setComment,
         error,
         onSubmitCreate,
