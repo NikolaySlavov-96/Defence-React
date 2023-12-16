@@ -1,0 +1,38 @@
+.comment__section {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.form__container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem 1rem 1.5rem 1rem;
+    border: none;
+    display: flex;
+    justify-content: center;
+}
+
+.form__container form div {
+    margin-bottom: 1rem;
+}
+
+input {
+    border: none;
+    padding: 4px 6px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.14);
+}
+
+.comment__name {
+    text-align: left;
+}
+
+.comment__commentar textarea {
+    width: 600px;
+    height: 100px;
+    resize: none;
+    border-radius: 1rem;
+    border: transparent;
+    background-color: rgba(0, 0, 0, 0.14);;
+    padding: 10px;
+}
