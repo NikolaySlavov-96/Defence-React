@@ -26,7 +26,10 @@ export const ShowAll = () => {
         <section className={style["comment__section"]}>
             <div className={style['comment_container']}>
                 {comment && comment.map(e => <CommentCard key={e._id} {...e} userId={userId} />)}
-                {!comment.length && (<h2>No Comments. You can add first! First.</h2>)}
+                {!comment.length && (owner ?
+                    <h2 className={style['comment__empty']}>No Comments.</h2> :
+                    <h2 className={style['comment__empty']}>No Comments. You can add first!</h2>
+                )}
             </div>
             {userId &&
                 <div className={style['create-comment']}>

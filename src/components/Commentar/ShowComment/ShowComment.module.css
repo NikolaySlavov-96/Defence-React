@@ -12,3 +12,7 @@
 .create-comment {
     width: 100%;
 }
+
+.comment__empty {
+    text-align: center;
+}
