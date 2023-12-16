@@ -11,7 +11,7 @@ export const commentarServiceFactory = (token) => {
 
     const editCommentar = async (id, idComment, data) => request.put(`/source/product/${id}/comment/${idComment}`, data);
 
-    const deleteCommentar = async (id, idComment) => request.remove(`/source/product/${id}/comment/${idComment}` + id);
+    const deleteCommentar = async (id, idComment) => request.remove(`/source/product/${id}/comment/${idComment}`);
 
     return {
         getCommentars,
