@@ -1,6 +1,7 @@
 .comment__list {
     border: none;
     border-radius: 1rem;
+    margin-bottom: 3rem;
 }
 
 .comment__info {
