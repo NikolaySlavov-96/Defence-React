@@ -1,0 +1,14 @@
+.comment__section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.comment_container {
+    width: 80%;
+}
+
+.create-comment {
+    width: 100%;
+}
