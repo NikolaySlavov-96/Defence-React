@@ -1,0 +1,55 @@
+.comment__list {
+    border: none;
+    border-radius: 1rem;
+}
+
+.comment__info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.comment__info p {
+    padding-left: 3rem;
+}
+
+.info__date {
+    display: flex;
+    padding: 0;
+}
+
+.info__date > p {
+    margin-right: 1.5rem;
+}
+
+.info__date span {
+    font-size: 14px;
+}
+
+.comment__owner {
+    padding: 0 1.5rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.comment__owner p {
+    padding-left: 12px;
+}
+
+.comment__area {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.comment__area p {
+    margin-left: 1rem;
+}
+
+.comment__area div {
+    margin: 0 0 1rem 2rem;
+    height: 100px;
+    width: 80%;
+    border: 1px solid white;
+    background-color: rgb(245, 245, 235);
+}
