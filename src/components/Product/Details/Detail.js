@@ -15,7 +15,7 @@ export const Detail = () => {
         setProduct(getProduct(id));
     }, [id]);
 
-    const owner = userId && product.owner === userId;
+    const owner = userId && product.owner?._id === userId;
 
     return (
         <section className={style["detail__section"]}>
