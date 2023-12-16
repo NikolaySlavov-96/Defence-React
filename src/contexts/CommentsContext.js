@@ -15,7 +15,6 @@ export const CommentProvide = ({ children }) => {
         if (prodId !== '') {
             CommentarService.getCommentars(prodId)
                 .then(req => {
-                    console.log(req);
                     setComment(req);
                 });
         }
@@ -30,12 +29,19 @@ export const CommentProvide = ({ children }) => {
         }
     }
 
+    const onSubmitDelete = async (commentId) => {
+        await CommentarService.deleteCommentar(prodId, commentId);
+        setComment(c => c.filter(com => com._id !== commentId));
+        return ;
+    }
+
     const contextValue = {
         comment,
         setProdId,
         setComment,
         error,
         onSubmitCreate,
+        onSubmitDelete,
     }
 
     return (
