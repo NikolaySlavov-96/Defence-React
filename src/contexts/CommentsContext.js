@@ -24,8 +24,7 @@ export const CommentProvide = ({ children }) => {
     const onSubmitCreate = async (value) => {
         try {
             const data = await CommentarService.createCommentar(prodId, value);
-            console.log(data);
-            setComment(data);
+            setComment(c => [...c, data]);
         } catch (err) {
             setError(err.message);
         }
