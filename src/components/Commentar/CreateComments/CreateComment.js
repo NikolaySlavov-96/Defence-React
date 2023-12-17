@@ -10,8 +10,8 @@ export const CreateComment = () => {
         name: '',
         commentar: '',
     }, onSubmitCreate, {
-        name: ['required'],
-        commentar: ['required'],
+        name: ['required', '3'],
+        commentar: ['required', '10'],
     });
 
     return (
@@ -33,7 +33,7 @@ export const CreateComment = () => {
                         {errors.commentar && (<p className='error'>{errors.commentar}</p>)}
                     </div>
 
-                    <button className={`btn ${style["btn-publick"]}`}>Publick</button >
+                    <button className={`btn`}>Publick</button >
                 </form >
             </div >
         </section >
