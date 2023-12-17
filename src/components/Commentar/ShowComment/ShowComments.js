@@ -12,10 +12,9 @@ export const ShowAll = () => {
     const { id } = useParams();
     const { userId } = useAuthContext()
     const { getProduct } = useProductContext();
-    const { comment, setProdId, onSubmitDelete } = useCommentContext()
+    const { comment, setProdId, onSubmitDelete, commentId, setCommentId } = useCommentContext()
     const [ownerProd, setOwnerProd] = useState([]);
     const [deleteComment, setDeleteComment] = useState(false);
-    const [commentId, setCommentId] = useState('');
 
     useEffect(() => {
         setProdId(id);
@@ -51,9 +50,12 @@ export const ShowAll = () => {
                 </div>
                 }
             </div>
-            {userId &&
+            {userId ?
                 <div className={style['create-comment']}>
                     {!owner && <CreateComment />}
+                </div> :
+                <div>
+                    <h2>Before adding Commentar Please <Link to={'/auth/login'}>Log In</Link></h2>
                 </div>
             }
         </section >
