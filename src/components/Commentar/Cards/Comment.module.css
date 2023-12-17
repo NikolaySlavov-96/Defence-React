@@ -1,7 +1,10 @@
+/* Show commentar */
+
 .comment__list {
     border: none;
     border-radius: 1rem;
     margin-bottom: 3rem;
+    text-align: center;
 }
 
 .comment__info {
@@ -20,7 +23,7 @@
     padding: 0;
 }
 
-.info__date > p {
+.info__date>p {
     margin-right: 1.5rem;
 }
 
@@ -35,7 +38,9 @@
 }
 
 .comment__owner p {
-    padding-left: 12px;
+    padding: 5px;
+    margin-left: 12px;
+    cursor: pointer;
 }
 
 .comment__area {
@@ -53,4 +58,29 @@
     width: 80%;
     border: 1px solid white;
     background-color: rgb(245, 245, 235);
+}
+
+.store__area {
+    padding: 0;
+}
+
+/* Edit Commentar */
+
+.comment__list h3 {
+    margin: 0;
+}
+
+.comment__area textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border-radius: 1rem;
+    border: transparent;
+    background-color: rgba(0, 0, 0, 0.14);
+    ;
+    padding: 10px;
+}
+
+.btn-edit {
+    margin-bottom: 10px;
 }
