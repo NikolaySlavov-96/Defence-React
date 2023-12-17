@@ -9,6 +9,7 @@ export const CommentProvide = ({ children }) => {
     const [comment, setComment] = useState([]);
     const [error, setError] = useState([]);
     const [prodId, setProdId] = useState('');
+    const [commentId, setCommentId] = useState('');
     const CommentarService = useService(commentarServiceFactory);
 
     useEffect(() => {
@@ -20,6 +21,10 @@ export const CommentProvide = ({ children }) => {
         }
     }, [prodId]);
 
+    const getSelectComment = () => {
+        return comment.find(com => com._id === commentId);
+    }
+
     const onSubmitCreate = async (value) => {
         try {
             const data = await CommentarService.createCommentar(prodId, value);
@@ -29,18 +34,32 @@ export const CommentProvide = ({ children }) => {
         }
     }
 
+    const onSubmitEdit = async (value) => {
+        try {
+            const prod = await CommentarService.editCommentar(prodId, commentId, value);
+
+            setComment(p => p.map(c => c._id === value._id ? prod : c));
+        } catch (err) {
+            setError(err.message);
+        }
+    }
+
     const onSubmitDelete = async (commentId) => {
         await CommentarService.deleteCommentar(prodId, commentId);
         setComment(c => c.filter(com => com._id !== commentId));
-        return ;
+        return;
     }
 
     const contextValue = {
         comment,
         setProdId,
         setComment,
+        commentId,
+        setCommentId,
+        getSelectComment,
         error,
         onSubmitCreate,
+        onSubmitEdit,
         onSubmitDelete,
     }
 
