@@ -5,7 +5,7 @@ import { useAuthContext } from "../../contexts/AuthContext"
 export const RouteGuard = ({ children }) => {
     const { isAuthenticated } = useAuthContext();
 
-    if (!isAuthenticated) { <Navigate to="/auth/login" /> }
+    if (!isAuthenticated) { return <Navigate to="/auth/login" /> }
 
     return children ? children : <Outlet />
 }
