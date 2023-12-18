@@ -19,6 +19,7 @@ import { CommentProvide } from './contexts/CommentsContext';
 import { RouteGuard } from './components/common/RouteGuard';
 import { ProductOwner } from './components/common/ProductOwner';
 import { ShowAll } from './components/Commentar/ShowComment/ShowComments'
+import { ProfileInfo } from './components/Profile/ProfileInfo/ProfileInfo';
 
 function App() {
     return (
@@ -45,6 +46,9 @@ function App() {
                                 <ProductOwner>
                                     <Delete />
                                 </ProductOwner>} />
+                            <Route path='/profil' element={
+                                <ProfileInfo />
+                            } />
                         </Route>
                     </Routes>
                 </CommentProvide>
