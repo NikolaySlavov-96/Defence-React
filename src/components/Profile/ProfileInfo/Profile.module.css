@@ -1,0 +1,30 @@
+/* Show Profile */
+
+.profile__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.profile__info {
+    border: none;
+    width: 50%;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    padding: 10px;
+}
+
+.info__container div {
+    padding: 3.4px;
+}
+
+.button__container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.user__add {
+    width: 100%;
+}
