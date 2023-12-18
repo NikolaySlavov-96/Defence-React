@@ -1,10 +1,10 @@
-import { Link, Route, Routes } from "react-router-dom";
 import style from './Profile.module.css';
 import { useEffect, useState } from "react";
 import { useForm } from "../../../hooks/useForm";
 import { useService } from "../../../hooks/useService";
 import { profileServiceFactory } from "../../../services/profile";
 import { useAuthContext } from "../../../contexts/AuthContext";
+import { ProfileCard } from "../Cards/ProfileCard";
 
 
 export const ProfileInfo = () => {
@@ -29,14 +29,12 @@ export const ProfileInfo = () => {
         if (viewProd) {
             ProfileService.getProduct(userId)
                 .then(req => {
-                    console.log(req)
                     setProd(req);
                 });
         }
         if (viewCommen) {
             ProfileService.getComment(userId)
                 .then(req => {
-                    console.log(req)
                     setComment(req);
                 });
         }
@@ -61,6 +59,16 @@ export const ProfileInfo = () => {
     const deleteProfileConfurm = () => {
         onSubmitDelete();
         onSubmitLogout();
+    }
+
+    const viewProduct = () => {
+        setProd([]);
+        setViewProd(!viewProd)
+    }
+
+    const viewComment = () => {
+        setComment([]);
+        setViewCommen(!viewCommen)
     }
 
     const { values, changeHandler, onSubmit, changeValue, errors } = useForm({
@@ -139,11 +147,25 @@ export const ProfileInfo = () => {
 
             <div className={style['user__add']}>
                 <section className={style['profile__product']}>
-                    <h2>Your Added Product</h2>
+                    <div className={`shadow ${style['container__info']}`}>
+                        <h2>Your Added Product</h2>
+                        <button onClick={() => viewProduct()}>V</button>
+                    </div>
+                    <div className={style['all-container']}>
+                        {prod && prod.map(e => <ProfileCard key={e._id} {...e} />)}
+                        {viewProd && !prod.length && (<h2>There are no product.</h2>)}
+                    </div>
                 </section>
 
                 <section className={style['profile__product']}>
-                    <h2>Your Added Comment</h2>
+                    <div className={`shadow ${style['container__info']}`}>
+                        <h2>Your Added Comment</h2>
+                        <button onClick={() => viewComment()}>V</button>
+                    </div>
+                    <div className={style['all-container']}>
+                        {comment && comment.map(e => <ProfileCard key={e._id} {...e} />)}
+                        {viewCommen && !comment.length && (<h2>There are no comment.</h2>)}
+                    </div>
                 </section>
             </div>
         </div >

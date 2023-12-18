@@ -26,5 +26,20 @@
 }
 
 .user__add {
-    width: 100%;
+    width: 90%;
+}
+
+.container__info {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    margin-bottom: 2rem;
+}
+
+.container__info h2 {
+    margin: 0;
+}
+
+.all-container {
+    margin: 0 2rem 2rem 2rem;
 }
