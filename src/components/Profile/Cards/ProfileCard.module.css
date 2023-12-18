@@ -1,0 +1,16 @@
+.profile__card {
+    border-radius: 2rem;
+    padding: 10px;
+    margin-bottom: 2rem;
+}
+
+.profile__line {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-view {
+    margin-right: 30px;
+}
+
+
