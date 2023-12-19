@@ -1,3 +1,25 @@
+# Introduction of Project
+
+My project represent online platform for selling product from many sellers.
+In it you can add products from any user with an account, as well as comment on published products.
+You can view the project at: https://react.slavo-v.dev
+
+# Functionality
+
+If you are a user with account you can create product and commentars. 
+For adding commentars is required you can didn't owner for product.
+Any product or comment owner can edit or delete what has been added.
+Guest can view only products and comments.
+
+The application uses API with address: https://api-defence.slavo-v.dev which uses for database mongo
+atlas.
+
+# Using of application
+
+You can clone or download repository and then you only need to download all the library with npm install. 
+This application using localstorage in your browser. 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
